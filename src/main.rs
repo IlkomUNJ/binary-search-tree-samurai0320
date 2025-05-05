@@ -112,6 +112,59 @@ fn test_binary_search_tree(){
             println!("node with key of {} does not exist, failed to get successor", key)
         }
     }
+    // Test tree_insert
+    println!("Inserting node with value 10,30,25,21,19,11,23,27,28...");
+    BstNode::tree_insert(&rootlink, 10);
+    BstNode::tree_insert(&rootlink, 30);
+    BstNode::tree_insert(&rootlink, 25);
+    BstNode::tree_insert(&rootlink, 21);
+    BstNode::tree_insert(&rootlink, 19);
+    BstNode::tree_insert(&rootlink, 11);
+    BstNode::tree_insert(&rootlink, 23);
+    BstNode::tree_insert(&rootlink, 27);
+    BstNode::tree_insert(&rootlink, 28);
+    BstNode::tree_insert(&rootlink, 26);
+    let insert_tree_path = "bst_insert.dot";
+    generate_dotfile_bst(&rootlink, insert_tree_path);
+    
+
+    
+
+    // Test tree_delete (just put "//to test every possible cases")
+    println!("Deleting node with value 2,3,17,20,7,4,13,9,10...");
+    if let Some(node_to_delete) = rootlink.borrow().tree_search(&2) {
+        BstNode::tree_delete(&mut rootlink.clone(), &node_to_delete);
+    }
+    if let Some(node_to_delete) = rootlink.borrow().tree_search(&3) {
+        BstNode::tree_delete(&mut rootlink.clone(), &node_to_delete);
+    }
+    if let Some(node_to_delete) = rootlink.borrow().tree_search(&17) {
+        BstNode::tree_delete(&mut rootlink.clone(), &node_to_delete);
+    }
+    if let Some(node_to_delete) = rootlink.borrow().tree_search(&20) {
+        BstNode::tree_delete(&mut rootlink.clone(), &node_to_delete);
+    }
+    if let Some(node_to_delete) = rootlink.borrow().tree_search(&7) {
+        BstNode::tree_delete(&mut rootlink.clone(), &node_to_delete);
+    }
+    if let Some(node_to_delete) = rootlink.borrow().tree_search(&4) {
+        BstNode::tree_delete(&mut rootlink.clone(), &node_to_delete);
+    }
+    if let Some(node_to_delete) = rootlink.borrow().tree_search(&13) {
+        BstNode::tree_delete(&mut rootlink.clone(), &node_to_delete);
+    }
+    if let Some(node_to_delete) = rootlink.borrow().tree_search(&9) {
+        BstNode::tree_delete(&mut rootlink.clone(), &node_to_delete);
+    }
+    if let Some(node_to_delete) = rootlink.borrow().tree_search(&10) {
+        BstNode::tree_delete(&mut rootlink.clone(), &node_to_delete);
+    }
+    
+    
+    
+    let delete_tree_path = "bst_delete.dot";
+    generate_dotfile_bst(&rootlink, delete_tree_path);
+    
 }
 
 #[allow(dead_code)]
